@@ -44,7 +44,7 @@ namespace WeekNumberSort.Core
                 }
             }
             Console.WriteLine(movedFilesNumber + " files moved");
-            Console.WriteLine(failedMovedFilesNumber + " files don't moved");
+            Console.WriteLine(failedMovedFilesNumber + " files not moved");
         }
     }
 }
