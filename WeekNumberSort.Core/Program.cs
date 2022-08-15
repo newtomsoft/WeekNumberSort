@@ -8,7 +8,7 @@ var cultureInfo = new CultureInfo("fr-FR");
 var calendar = cultureInfo.Calendar;
 var calendarWeekRule = cultureInfo.DateTimeFormat.CalendarWeekRule;
 var firstDayOfWeek = cultureInfo.DateTimeFormat.FirstDayOfWeek;
-var sourceDirectory = args.Length == 0 ? "." : args[0];
+var sourceDirectory = args.Length == 0 ? Path.Combine(".", "new") : args[0];
 var movedFilesNumber = 0;
 var failedMovedFilesNumber = 0;
 var availablePatternExtensions = new List<string>() { "*.jpg", "*.png" };
@@ -22,9 +22,10 @@ foreach (var patternExtension in availablePatternExtensions)
         var weekOfYear = calendar.GetWeekOfYear(date, calendarWeekRule, firstDayOfWeek);
         var formattedWeekOfYear = weekOfYear > 9 ? weekOfYear.ToString() : "0" + weekOfYear;
         var year = date.Year;
-        var oldDirectoryName = Path.GetDirectoryName(fullFileName);
+        var oldDirectoryName = Path.GetDirectoryName(fullFileName)!;
         var fileName = Path.GetFileName(fullFileName);
-        var newDirectoryName = Path.Combine(oldDirectoryName, year + "-" + formattedWeekOfYear);
+
+        var newDirectoryName = Path.Combine(Directory.GetParent(oldDirectoryName)!.FullName, year + "-" + formattedWeekOfYear);
         var newFileName = Path.Combine(newDirectoryName, fileName);
         Directory.CreateDirectory(newDirectoryName);
         try
