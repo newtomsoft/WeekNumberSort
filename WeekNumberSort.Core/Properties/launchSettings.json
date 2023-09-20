@@ -2,7 +2,7 @@
   "profiles": {
     "WeekNumberSort.Core": {
       "commandName": "Project",
-      "commandLineArgs": "C:\\Users\\thoma\\Nextcloud\\Photos\\500px\\new"
+      "commandLineArgs": "D:\\NextcloudRaspberry\\Photos\\500px\\new"
     }
   }
 }
